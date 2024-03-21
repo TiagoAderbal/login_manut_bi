@@ -1,4 +1,6 @@
-document.getElementById('loginButton').addEventListener('click', async function () {
+document.getElementById('loginButton').addEventListener('click', async (event) => {
+    event.preventDefault(); // Impede o comportamento padrão de recarregar a página
+
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
@@ -14,7 +16,8 @@ document.getElementById('loginButton').addEventListener('click', async function 
         if (response.ok) {
             alert('Login bem-sucedido!');
         } else {
-            alert('Credenciais inválidas');
+            const span = document.querySelector('.span');
+            span.style.display = 'inline-block';
         }
     } catch (error) {
         console.error('Erro ao fazer login:', error);
